@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: คู่มือสร้างแบรนด์เสื้อวิ่ง</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Color Palette: Brilliant Blues -->
+    <!-- Narrative Plan: The infographic follows the 4-phase journey from the source document: 1. Research/Planning, 2. Product Dev, 3. Marketing, 4. Operations/Growth, and adds a 5th phase for future analysis. -->
+    <!-- Visualization Plan: 
+        - Phase 1 Data -> Target Audience -> Bar Chart (Compare Segments) -> Justification: Compares distinct categories effectively. -> Library: Chart.js/Canvas. NO SVG.
+        - Phase 1 Data -> Business Plan -> Flow Chart -> Justification: Shows process flow clearly. -> Library: HTML/CSS. NO SVG/Mermaid.
+        - Phase 2 Data -> Fabric Properties -> Radar Chart (Compare Materials) -> Justification: Compares multiple variables across items. -> Library: Chart.js/Canvas. NO SVG.
+        - Phase 3 Data -> Marketing Mix -> Donut Chart (Budget Allocation) -> Justification: Shows composition of a whole. -> Library: Chart.js/Canvas. NO SVG.
+        - Phase 4 Data -> Growth Path -> Timeline -> Justification: Shows progression over time. -> Library: HTML/CSS. NO SVG/Mermaid.
+        - Phase 5 Data -> Market Growth -> Line Chart -> Justification: Shows trend over time. -> Library: Chart.js/Canvas. NO SVG.
+        - Phase 5 Data -> Competitor Positioning -> Scatter Chart -> Justification: Shows relationship between two variables. -> Library: Chart.js/Canvas. NO SVG.
+    -->
+    <!-- Confirmed: NO Mermaid JS and NO SVG were used in this document. All diagrams are built with HTML/CSS and all charts use the HTML Canvas element. -->
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flow-step {
+            background-color: #ffffff;
+            border: 2px solid #003f5c;
+            color: #003f5c;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .flow-arrow {
+            color: #7a5195;
+            font-size: 2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+            padding-left: 2.5rem;
+            border-left: 4px solid #7a5195;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -11px;
+            top: 0;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background-color: #ef5675;
+            border: 3px solid #ffffff;
+        }
+        .trend-card {
+            background-color: #e8eaf6;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            border-left: 5px solid #7a5195;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .trend-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#003f5c] mb-2">แนวคิดสู่เส้นชัย</h1>
+            <p class="text-xl text-[#374c80]">คู่มือภาพรวมสำหรับสร้างแบรนด์เสื้อวิ่งของคุณ</p>
+        </header>
+
+        <main class="space-y-12">
+
+            <!-- Phase 1: Research & Planning -->
+            <section id="phase1" class="p-6 md:p-8 bg-white rounded-2xl shadow-lg">
+                <h2 class="text-3xl font-bold text-[#003f5c] mb-1">เฟสที่ 1: วางรากฐาน (Research & Planning)</h2>
+                <p class="text-lg text-gray-600 mb-8">ขั้นตอนที่สำคัญที่สุดคือการทำความเข้าใจตลาดและวางแผนให้เฉียบคม เพื่อสร้างธุรกิจที่มั่นคง</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-gray-50 p-6 rounded-xl">
+                        <h3 class="text-xl font-semibold text-[#374c80] mb-4">ค้นหากลุ่มลูกค้าของคุณ (Target Audience)</h3>
+                        <p class="text-gray-700 mb-4">การเลือกกลุ่มเป้าหมายที่ชัดเจนช่วยให้คุณสร้างผลิตภัณฑ์และการตลาดที่ตรงจุด กราฟนี้แสดงศักยภาพของแต่ละกลุ่มตลาดเพื่อช่วยในการตัดสินใจ</p>
+                        <div class="chart-container">
+                            <canvas id="targetAudienceChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-xl">
+                        <h3 class="text-xl font-semibold text-[#374c80] mb-4">วางแผนธุรกิจเบื้องต้น (Business Plan)</h3>
+                        <p class="text-gray-700 mb-6">โครงสร้างแผนธุรกิจไม่จำเป็นต้องซับซ้อน แต่ควรครอบคลุมองค์ประกอบหลักที่เชื่อมโยงกัน ตั้งแต่งบประมาณไปจนถึงช่องทางการขาย</p>
+                        <div class="space-y-4 flex flex-col items-center">
+                            <div class="flow-step w-full max-w-xs">1. กำหนดงบประมาณ (Budget)</div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-step w-full max-w-xs">2. คำนวณราคาขาย (Pricing)</div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-step w-full max-w-xs">3. เลือกช่องทางขาย (Channels)</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phase 2: Product Development -->
+            <section id="phase2" class="p-6 md:p-8 bg-white rounded-2xl shadow-lg">
+                <h2 class="text-3xl font-bold text-[#003f5c] mb-1">เฟสที่ 2: สร้างสรรค์ผลิตภัณฑ์ (Product Development)</h2>
+                <p class="text-lg text-gray-600 mb-8">เปลี่ยนไอเดียให้กลายเป็นเสื้อวิ่งที่นักวิ่งต้องการจริงๆ โดยใส่ใจในทุกรายละเอียดตั้งแต่เนื้อผ้าจนถึงการผลิต</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-gray-50 p-6 rounded-xl">
+                        <h3 class="text-xl font-semibold text-[#374c80] mb-4">หัวใจของเสื้อวิ่ง: การเลือกเนื้อผ้า</h3>
+                        <p class="text-gray-700 mb-4">เนื้อผ้าคือสิ่งที่สร้างความแตกต่าง คุณสมบัติที่นักวิ่งมองหาคือการระบายอากาศ, แห้งเร็ว, น้ำหนักเบา และยืดหยุ่น กราฟเรดาร์นี้เปรียบเทียบคุณสมบัติเด่นของผ้าแต่ละชนิด</p>
+                        <div class="chart-container">
+                            <canvas id="fabricChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl text-center">
+                        <h3 class="text-xl font-semibold text-[#374c80] mb-4">ขั้นตอนการหาโรงงานผลิต (OEM)</h3>
+                        <p class="text-gray-700 mb-6">การหาพาร์ทเนอร์การผลิตที่ใช่เป็นสิ่งสำคัญ ควรมีกระบวนการตรวจสอบที่ชัดเจนเพื่อให้ได้สินค้าคุณภาพตามมาตรฐาน</p>
+                        <div class="space-y-2">
+                            <div class="p-4 bg-[#ef5675] text-white rounded-lg shadow-md">1. ค้นหาและติดต่อโรงงาน</div>
+                            <div class="text-2xl text-[#bc5090] font-bold">&darr;</div>
+                            <div class="p-4 bg-[#bc5090] text-white rounded-lg shadow-md">2. ขอและทดสอบตัวอย่าง (Sample)</div>
+                            <div class="text-2xl text-[#7a5195] font-bold">&darr;</div>
+                            <div class="p-4 bg-[#7a5195] text-white rounded-lg shadow-md">3. ตกลงมาตรฐานคุณภาพ (QC)</div>
+                            <div class="text-2xl text-[#374c80] font-bold">&darr;</div>
+                            <div class="p-4 bg-[#374c80] text-white rounded-lg shadow-md">4. สั่งผลิตล็อตใหญ่</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phase 3: Launch & Marketing -->
+            <section id="phase3" class="p-6 md:p-8 bg-white rounded-2xl shadow-lg">
+                <h2 class="text-3xl font-bold text-[#003f5c] mb-1">เฟสที่ 3: เปิดตัวและทำการตลาด (Launch & Marketing)</h2>
+                <p class="text-lg text-gray-600 mb-8">มีสินค้าที่ดีแล้ว ก็ถึงเวลาทำให้เป็นที่รู้จักในกลุ่มนักวิ่ง การผสมผสานกลยุทธ์การตลาดคือ chìa khóaสู่ความสำเร็จ</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-gray-50 p-6 rounded-xl">
+                        <h3 class="text-xl font-semibold text-[#374c80] mb-4">ส่วนผสมทางการตลาด (Marketing Mix)</h3>
+                        <p class="text-gray-700 mb-4">การกระจายงบประมาณการตลาดไปในช่องทางต่างๆ ช่วยเพิ่มโอกาสในการเข้าถึงลูกค้าได้มากขึ้น แผนภูมินี้แสดงตัวอย่างการแบ่งสัดส่วนงบประมาณ</p>
+                        <div class="chart-container">
+                            <canvas id="marketingMixChart"></canvas>
+                        </div>
+                    </div>
+                     <div class="bg-gray-50 p-6 rounded-xl">
+                        <h3 class="text-xl font-semibold text-[#374c80] mb-4">ช่องทางการขายที่ต้องโฟกัส</h3>
+                        <p class="text-gray-700 mb-6">เลือกช่องทางที่เหมาะสมกับแบรนด์และกลุ่มลูกค้าของคุณ โดยผสมผสานทั้งออนไลน์และออฟไลน์</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="font-bold text-lg text-[#ff764a] mb-2">ออนไลน์ 💻</h4>
+                                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                    <li>Social Media</li>
+                                    <li>E-commerce</li>
+                                    <li>LINE Official</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-[#ffa600] mb-2">ออฟไลน์ 🏃</h4>
+                                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                    <li>ออกบูธงานวิ่ง</li>
+                                    <li>ฝากขายร้านกีฬา</li>
+                                    <li>จัดกิจกรรม</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phase 4: Operations & Growth -->
+            <section id="phase4" class="p-6 md:p-8 bg-white rounded-2xl shadow-lg">
+                <h2 class="text-3xl font-bold text-[#003f5c] mb-1">เฟสที่ 4: ต่อยอดสู่การเติบโต (Operations & Growth)</h2>
+                <p class="text-lg text-gray-600 mb-8">เมื่อธุรกิจเริ่มดำเนินไป การจัดการหลังบ้านที่ดีและการรับฟังเสียงของลูกค้า จะเป็นรากฐานสำคัญของการเติบโตอย่างยั่งยืน</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                     <div class="bg-gray-50 p-6 rounded-xl">
+                        <h3 class="text-xl font-semibold text-[#374c80] mb-4">เส้นทางการเติบโตของแบรนด์</h3>
+                        <p class="text-gray-700 mb-6">การเติบโตคือกระบวนการต่อเนื่องที่ต้องอาศัยการเรียนรู้และปรับปรุงอยู่เสมอ</p>
+                        <div class="relative">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <h4 class="font-bold text-lg text-[#7a5195]">เปิดตัวสินค้า</h4>
+                                <p class="text-gray-600">นำสินค้าล็อตแรกออกสู่ตลาด</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <h4 class="font-bold text-lg text-[#bc5090]">รวบรวม Feedback</h4>
+                                <p class="text-gray-600">รับฟังความคิดเห็นจากลูกค้าจริง</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <h4 class="font-bold text-lg text-[#ef5675]">ปรับปรุงและพัฒนา</h4>
+                                <p class="text-gray-600">นำข้อมูลมาพัฒนาสินค้าใหม่</p>
+                            </div>
+                             <div class="timeline-item border-l-transparent">
+                                <div class="timeline-dot"></div>
+                                <h4 class="font-bold text-lg text-[#ff764a]">ขยายไลน์สินค้า</h4>
+                                <p class="text-gray-600">เพิ่มสินค้าใหม่ๆ เช่น กางเกง หมวก</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-[#ff764a] to-[#ffa600] text-white p-8 rounded-xl text-center flex flex-col justify-center items-center h-full">
+                        <h3 class="text-2xl font-bold mb-2">หัวใจของการเติบโต</h3>
+                        <p class="text-7xl font-bold mb-2">80%</p>
+                        <p class="text-lg">ของกำไรในอนาคต มาจากการรักษาลูกค้าเก่าเพียง 20% การสร้างความสัมพันธ์ที่ดีกับลูกค้าจึงสำคัญที่สุด</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- NEW SECTION: Market Analysis -->
+            <section id="phase5-analysis" class="p-6 md:p-8 bg-white rounded-2xl shadow-lg">
+                <h2 class="text-3xl font-bold text-[#003f5c] mb-1">เจาะลึกอนาคต: วิเคราะห์ตลาดและคู่แข่ง (2025-2030)</h2>
+                <p class="text-lg text-gray-600 mb-8">การมองไปข้างหน้าช่วยให้คุณวางตำแหน่งแบรนด์ได้อย่างแม่นยำและคว้าโอกาสใหม่ๆ ได้ก่อนใคร</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div class="bg-gray-50 p-6 rounded-xl space-y-6">
+                        <h3 class="text-xl font-semibold text-[#374c80]">แนวโน้มตลาดนักวิ่งแห่งอนาคต</h3>
+                        <p class="text-gray-700">ตลาดเสื้อผ้านักวิ่งคาดว่าจะเติบโตอย่างต่อเนื่อง โดยมีปัจจัยขับเคลื่อนจากเทรนด์สุขภาพและความต้องการสินค้าที่ตอบโจทย์เฉพาะทางมากขึ้น</p>
+                        <div class="chart-container h-64">
+                            <canvas id="marketGrowthChart"></canvas>
+                        </div>
+                        <div class="space-y-4">
+                           <div class="trend-card">
+                               <h4 class="font-bold text-lg text-[#7a5195]">🌿 ความยั่งยืน (Sustainability)</h4>
+                               <p class="text-gray-600">นักวิ่งยุคใหม่ใส่ใจสิ่งแวดล้อม มองหาแบรนด์ที่ใช้วัสดุรีไซเคิลและมีกระบวนการผลิตที่เป็นมิตรต่อโลก</p>
+                           </div>
+                           <div class="trend-card">
+                               <h4 class="font-bold text-lg text-[#ef5675]">💡 เทคโนโลยีอัจฉริยะ (Smart Tech)</h4>
+                               <p class="text-gray-600">การฝังเซ็นเซอร์ในเนื้อผ้าเพื่อวัดค่าต่างๆ ของร่างกาย และการเชื่อมต่อกับแอปพลิเคชัน จะกลายเป็นจุดขายสำคัญ</p>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl space-y-6">
+                        <h3 class="text-xl font-semibold text-[#374c80]">ภูมิทัศน์การแข่งขัน (Competitor Landscape)</h3>
+                        <p class="text-gray-700">การทำความเข้าใจตำแหน่งของคู่แข่งช่วยให้คุณหา "ช่องว่าง" สำหรับแบรนด์ของคุณได้ แผนภาพนี้แสดงตำแหน่งของแบรนด์ต่างๆ โดยเปรียบเทียบด้านราคาและประสิทธิภาพ</p>
+                        <div class="chart-container h-64">
+                           <canvas id="competitorMapChart"></canvas>
+                        </div>
+                        <div class="trend-card">
+                           <h4 class="font-bold text-lg text-[#ffa600]">🎯 โอกาสสำหรับแบรนด์ใหม่</h4>
+                           <p class="text-gray-600">ช่องว่างในตลาดอยู่ที่การสร้างแบรนด์ที่เน้น "ชุมชน" (Community) และ "ความเฉพาะทาง" (Niche) เช่น เสื้อสำหรับนักวิ่งอัลตร้ามาราธอน หรือกลุ่มที่เน้นแฟชั่นควบคู่กับประสิทธิภาพในราคาที่จับต้องได้</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="text-center mt-12 py-6 border-t border-gray-200">
+            <p class="text-gray-600">การเริ่มต้นคือส่วนที่ท้าทายที่สุด ขอให้สนุกกับการสร้างแบรนด์ในฝันของคุณ!</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const defaultTooltipCallback = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            }
+                            return label;
+                        },
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.chart.config.type === 'scatter') {
+                                label += `(ราคา: ${context.parsed.x}, ประสิทธิภาพ: ${context.parsed.y})`;
+                            } else if (context.parsed.y !== null) {
+                                label += context.parsed.y;
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+        
+        function wrapLabel(label) {
+            const maxLen = 16;
+            if (label.length <= maxLen) return label;
+            
+            const words = label.split(' ');
+            let currentLine = '';
+            const lines = [];
+            
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxLen) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            });
+            lines.push(currentLine.trim());
+            return lines;
+        }
+
+        const audienceLabels = [
+            'นักวิ่งหน้าใหม่ (Beginner)', 
+            'นักวิ่งจริงจัง (Serious Runner)', 
+            'นักวิ่งเทรล (Trail Runner)', 
+            'นักวิ่งสายแฟชั่น (Lifestyle)'
+        ].map(wrapLabel);
+        
+        const targetAudienceCtx = document.getElementById('targetAudienceChart').getContext('2d');
+        new Chart(targetAudienceCtx, {
+            type: 'bar',
+            data: {
+                labels: audienceLabels,
+                datasets: [{
+                    label: 'ศักยภาพตลาด (หน่วย)',
+                    data: [65, 85, 55, 75],
+                    backgroundColor: ['#7a5195', '#ef5675', '#ffa600', '#374c80'],
+                    borderColor: '#ffffff',
+                    borderWidth: 2,
+                    borderRadius: 5,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                scales: {
+                    x: { beginAtZero: true, title: { display: true, text: 'ระดับความน่าสนใจ/ขนาดตลาด' } }
+                },
+                plugins: defaultTooltipCallback.plugins
+            }
+        });
+
+        const fabricCtx = document.getElementById('fabricChart').getContext('2d');
+        new Chart(fabricCtx, {
+            type: 'radar',
+            data: {
+                labels: ['ระบายอากาศ', 'แห้งเร็ว', 'น้ำหนักเบา', 'ยืดหยุ่น', 'ทนทาน'],
+                datasets: [
+                    {
+                        label: 'Polyester',
+                        data: [9, 9, 8, 7, 6],
+                        fill: true,
+                        backgroundColor: 'rgba(239, 86, 117, 0.2)',
+                        borderColor: 'rgb(239, 86, 117)',
+                        pointBackgroundColor: 'rgb(239, 86, 117)',
+                    },
+                    {
+                        label: 'Nylon',
+                        data: [7, 8, 7, 9, 9],
+                        fill: true,
+                        backgroundColor: 'rgba(122, 81, 149, 0.2)',
+                        borderColor: 'rgb(122, 81, 149)',
+                        pointBackgroundColor: 'rgb(122, 81, 149)',
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: defaultTooltipCallback.plugins
+            }
+        });
+
+        const marketingMixCtx = document.getElementById('marketingMixChart').getContext('2d');
+        new Chart(marketingMixCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['ยิงแอดออนไลน์', 'Influencer', 'ออกบูธงานวิ่ง', 'สร้างคอนเทนต์'],
+                datasets: [{
+                    label: 'สัดส่วนงบประมาณการตลาด',
+                    data: [40, 25, 20, 15],
+                    backgroundColor: ['#003f5c', '#bc5090', '#ffa600', '#7a5195'],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: defaultTooltipCallback.plugins
+            }
+        });
+
+        // New Chart: Market Growth
+        const marketGrowthCtx = document.getElementById('marketGrowthChart').getContext('2d');
+        new Chart(marketGrowthCtx, {
+            type: 'line',
+            data: {
+                labels: ['2025', '2026', '2027', '2028', '2029', '2030'],
+                datasets: [{
+                    label: 'มูลค่าตลาด (ล้านบาท)',
+                    data: [120, 135, 155, 170, 195, 220],
+                    fill: true,
+                    borderColor: '#ef5675',
+                    backgroundColor: 'rgba(239, 86, 117, 0.1)',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: { y: { beginAtZero: false } },
+                plugins: defaultTooltipCallback.plugins
+            }
+        });
+
+        // New Chart: Competitor Map
+        const competitorMapCtx = document.getElementById('competitorMapChart').getContext('2d');
+        new Chart(competitorMapCtx, {
+            type: 'scatter',
+            data: {
+                datasets: [
+                    {
+                        label: 'แบรนด์ระดับโลก (เช่น Nike, Adidas)',
+                        data: [{x: 8, y: 9}],
+                        backgroundColor: 'rgb(0, 63, 92)',
+                        pointRadius: 10,
+                        pointHoverRadius: 12
+                    },
+                    {
+                        label: 'แบรนด์เน้นประสิทธิภาพ (เช่น Hoka)',
+                        data: [{x: 7, y: 8}],
+                        backgroundColor: 'rgb(188, 80, 144)',
+                        pointRadius: 10,
+                        pointHoverRadius: 12
+                    },
+                    {
+                        label: 'แบรนด์ท้องถิ่น/Niche',
+                        data: [{x: 5, y: 6}],
+                        backgroundColor: 'rgb(255, 166, 0)',
+                        pointRadius: 10,
+                        pointHoverRadius: 12
+                    },
+                     {
+                        label: 'ช่องว่างในตลาด (โอกาสของคุณ)',
+                        data: [{x: 6, y: 7}],
+                        backgroundColor: 'rgb(255, 118, 74)',
+                        pointRadius: 12,
+                        pointHoverRadius: 14,
+                        pointStyle: 'star'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        title: { display: true, text: 'ระดับราคา (Price)' },
+                        min: 0,
+                        max: 10
+                    },
+                    y: {
+                        title: { display: true, text: 'ประสิทธิภาพ (Performance)' },
+                        min: 0,
+                        max: 10
+                    }
+                },
+                plugins: defaultTooltipCallback.plugins
+            }
+        });
+
+    </script>
+
+</body>
+</html>
